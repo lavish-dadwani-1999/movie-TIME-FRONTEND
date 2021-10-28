@@ -18,7 +18,6 @@ import "../styles/movieDetails.css"
             return alert("plese verify your email") & this.props.history.push(`/myProfile`)}
         // if(this.props.user?.user?.isSubscribe === false ) return <Redirect to="/subcription" />
         if(this.props?.movieDetails?.isPaid === true && this.props.user?.user?.isSubscribe === false ) return <Redirect to="/subcription" />
-        if(!this.props.user) return <Redirect to="/signIn" /> 
         return (
             <>
             <Navbar />
