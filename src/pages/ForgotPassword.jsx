@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
+// import { Redirect } from 'react-router'
 import { find_email } from '../redux/action/userAction'
 import validator from "validator"
 import "../styles/forgotPassword.css"
@@ -15,7 +15,7 @@ const handelSubmit = e=>{
 
     return (
         <>
-        {token && <Redirect to="/forgotpassword2" />}
+        {/* {token && <Redirect to="/forgotpassword2" />} */}
         <div className="forgotPasswordPage">
             <form className="forgotPassword" onSubmit={handelSubmit} >
                 <h1>Enter Your Email</h1>
