@@ -25,7 +25,7 @@ import {Redirect} from "react-router-dom"
         window.open("https://o-auth-video-backend.herokuapp.com/auth/google", "_self");
     }
 
-    render() { if(this.props.user) return <Redirect to="/home" />
+    render() { if(this.props.user) return <Redirect to="/" />
         return (
             <div className="logIn_page">
                 <div className="imageBack">

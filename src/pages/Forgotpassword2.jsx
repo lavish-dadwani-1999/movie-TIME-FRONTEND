@@ -26,7 +26,7 @@ class Forgotpassword2 extends Component {
         this.props.forgot_password(newPassword,cpassword,token)
     }
     render() {
-        if(this.props.forgotPassword) return <Redirect to="/home" /> 
+        if(this.props.forgotPassword) return <Redirect to="/display" /> 
         return (
             <>
             <Navbar/>

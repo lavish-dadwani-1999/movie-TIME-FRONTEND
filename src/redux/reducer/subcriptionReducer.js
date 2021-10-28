@@ -20,5 +20,4 @@ const subcriptionReducer = (state = initialState,action)=>{
     }
 
 }
-
-module.exports = subcriptionReducer
+export default  subcriptionReducer

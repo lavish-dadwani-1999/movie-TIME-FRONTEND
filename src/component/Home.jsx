@@ -7,7 +7,7 @@ import { Link ,Redirect } from 'react-router-dom'
 import "../styles/home.css"
 const Home = ({user}) => {
 
-    if(user) return <Redirect to="/home" />
+    if(user) return <Redirect to="/" />
     return (
         <div className="home">
             <div className="sub_home">

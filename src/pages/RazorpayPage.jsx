@@ -58,7 +58,7 @@ function loadScript(src) {
           if (responce.status === 200) {
             setSuccess(true);
             setTimeout(() => {
-              history.push("/home");
+              history.push("/");
             }, 2000);
           }
         },
@@ -75,7 +75,7 @@ function loadScript(src) {
     };
     
   if(!user) return <Redirect to="/signIn" />
-  if( !match.params?.order) return <Redirect to="/home" />
+  if( !match.params?.order) return <Redirect to="/" />
     return (
       <>
         <Navbar />

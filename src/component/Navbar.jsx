@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { log_out } from '../redux/action/userAction'
 import {BiArrowFromLeft} from "react-icons/bi"
 import "../styles/navbar.css"
-import { Style } from '@mui/icons-material'
 
  class Navbar extends Component {
 

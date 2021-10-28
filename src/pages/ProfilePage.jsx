@@ -13,8 +13,8 @@ class ProfilePage extends Component {
         e.preventDefault()
         const user = this.props.user
         this.props.email_verifaction(user.user?.email,user.user?.token)
-        this.props.history.push("/home")
-        this.props.get_user2(user.token)
+        this.props.history.push("/")
+        this.props.get_user2(user?.user.token)
     }
 
    stringToColor(string) {

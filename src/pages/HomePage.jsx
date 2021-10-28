@@ -43,7 +43,7 @@ class HomePage extends Component {
         this.props.science_movies(page5,limit)
         this.props.drama_movies(page6,limit)
         this.props.free_movies(page7,limit)
-        this.props.searchNews()
+        // this.props.searchNews()
         if(this.props.user?.user?.token){
             this.props.get_user2(this.props.user.user.token)
         }

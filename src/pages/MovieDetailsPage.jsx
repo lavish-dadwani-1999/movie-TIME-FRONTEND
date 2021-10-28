@@ -13,6 +13,7 @@ import "../styles/movieDetails.css"
         this.props.movie_details(id)
     }
     render() {
+        if(!this.props.user) return <Redirect to="/signIn" />
         if(this.props.user?.user?.isConfirmed === false){
             return alert("plese verify your email") & this.props.history.push(`/myProfile`)}
         // if(this.props.user?.user?.isSubscribe === false ) return <Redirect to="/subcription" />

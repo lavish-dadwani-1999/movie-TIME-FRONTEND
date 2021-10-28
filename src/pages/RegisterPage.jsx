@@ -21,7 +21,7 @@ import {Redirect} from "react-router-dom"
          if(!name || !email || !password) return alert("enter all filed")
          this.props.register(name,email,password)
      }
-    render() { if(this.props.user ) return <Redirect to="/home" />
+    render() { if(this.props.user ) return <Redirect to="/" />
         return (
             <div className="registerPage">
                 <div className="imageRegister">
