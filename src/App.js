@@ -31,7 +31,7 @@ function App() {
         <Route exact path="/editUser" component={EditUserPage} /> 
         <Route exact path="/changePassword" component={ChangePassword} /> 
         <Route exact path="/forgotPassword" component={ForgotPassword} /> 
-        <Route exact path="/forgotpassword2/:token" component={Forgotpassword2} /> 
+        <Route exact path="/passwordforgotchange/:token" component={Forgotpassword2} /> 
         <Route exact path="/search/:query" component={SearchPage} /> 
         <Route exact path="/subcription" component={SubcriptionPage} /> 
         <Route exact path="/payment/:order" component={RazorpayPage} /> 
