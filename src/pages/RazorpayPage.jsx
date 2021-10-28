@@ -33,7 +33,7 @@ function loadScript(src) {
         setOrderId(order);
       };
       data();
-    }, []);
+    }, [match.params]);
     const userJSON = localStorage.getItem("user");
     if(userJSON === null || undefined) return <Redirect to="/signIn" />
     const { user } = JSON.parse(userJSON);
