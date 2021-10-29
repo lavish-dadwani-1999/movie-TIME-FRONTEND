@@ -47,8 +47,11 @@ export const log_out =(token) => async Dispatch =>{
         console.log(user.data)
         Dispatch({type:LOGOUT_USER,payload:null})
     }catch(err){
-        Dispatch({type:TOGGLE_AUTH_USER})
-        console.log(err)
+        if (err.response && err.response.data) {
+            Dispatch({type:LOGOUT_USER,payload:null})
+            alert(`${err.response.data.message}`) // some reason error message
+            console.log(err)
+          }
     }finally{
         Dispatch({type:TOGGLE_AUTH_USER})
     }
