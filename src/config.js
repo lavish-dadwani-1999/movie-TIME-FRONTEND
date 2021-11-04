@@ -8,8 +8,9 @@ export const CLINT_ID = "264347630657-e4r3m0ajkp370dvg3j331l4tkl4svn0i.apps.goog
 export const BASE_URL= "https://youtube.googleapis.com/youtube/v3"
 
 
-export const BASE_ROUTE = "http://localhost:3000"
+export const BASE_ROUTE = "https://movie2time.herokuapp.com"
 
 
 
-// "https://movie2time.herokuapp.com"
+
+// "http://localhost:3000"
