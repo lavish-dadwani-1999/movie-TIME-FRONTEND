@@ -95,12 +95,13 @@ export const change_password =(oldpassword,newpassword) => async Dispatch =>{
     }
 }
 
-export const google_login =() => async Dispatch =>{
+export const google_login =(responce) => async Dispatch =>{
     try{
         Dispatch({type:TOGGLE_AUTH_USER})
-        const user = await axios(BASE_ROUTE+"/user/googleLogin")
+        const user = await axios.post(BASE_ROUTE+"/user/googleLogin",{responce})
         console.log(user.data)
         Dispatch({type:GOOGLE_LOGIN,payload:user.data})
+        return user
     }catch(err){
         if (err.response && err.response.data) {
             alert(`${err.response.data.message}`) // some reason error message

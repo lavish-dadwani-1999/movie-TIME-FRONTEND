@@ -1,6 +1,26 @@
 import axios from "axios"
 import { BASE_ROUTE } from "../../config"
-import { GET_SUBCRIPTION, GET_USER2, SUBCRIPTION_SUCCESS, SUBCRIPTION_TOGGLE } from "../actionTypes"
+import { GET_SUBCRIPTION, GET_USER2, GET_USER_SUBCRIPTION, SUBCRIPTION_SUCCESS, SUBCRIPTION_TOGGLE } from "../actionTypes"
+   
+export const get_user_subcription = ()=> async Dispatch=>{
+    try{
+        const user = JSON.parse(localStorage.getItem("user"))
+        Dispatch({type:SUBCRIPTION_TOGGLE})
+        const subcription = await axios.get(`${BASE_ROUTE}/user/userSubcription`,{headers: {"Authorization": user.user.token}})
+        console.log(subcription.data)
+        Dispatch({type:GET_USER_SUBCRIPTION,payload:subcription.data})
+        return subcription.data
+    }catch(err){
+        if (err.response && err.response.data) {
+            // alert(`${err.response.data.message}`) // some reason error message
+            console.log(err)
+          }
+    }finally{
+        Dispatch({type:SUBCRIPTION_TOGGLE})
+    }
+}
+
+
 
 export const get_subcription = (type,prize)=> async Dispatch=>{
     try{

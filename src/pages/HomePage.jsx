@@ -3,14 +3,15 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import Footer from '../component/Footer'
 import MovieList from '../component/MovieList'
+import MovieList2 from '../component/MovieList2'
 import Navbar from "../component/Navbar"
 import NewsList from '../component/NewsList'
 import Search from '../component/Search'
 import { action_movies, marvel_movies, movies_by_page,drama_movies,science_movies,hindi_movies,english_movies, free_movies } from '../redux/action/movieAction'
 import { searchNews } from '../redux/action/newsAction'
 import { get_user2 } from '../redux/action/userAction'
+import { get_watchlist_user } from '../redux/action/watchlistAction'
 import "../styles/home.css"
-
 class HomePage extends Component {
 
     state={
@@ -23,6 +24,7 @@ class HomePage extends Component {
         page5:1,
         page6:1,
         page7:1,
+        page8:1,
         content:"flex-end",
         content1:"flex-end",
         content2:"flex-end",
@@ -31,6 +33,7 @@ class HomePage extends Component {
         content5:"flex-end",
         content6:"flex-end",
         content7:"flex-end",
+        content8:"flex-end",
     }
 
     componentDidMount(){
@@ -43,6 +46,7 @@ class HomePage extends Component {
         this.props.science_movies(page5,limit)
         this.props.drama_movies(page6,limit)
         this.props.free_movies(page7,limit)
+        this.props.get_watchlist_user()
         this.props.searchNews()
         if(this.props.user?.user?.token){
             this.props.get_user2(this.props.user.user.token)
@@ -167,6 +171,20 @@ class HomePage extends Component {
         this.props.free_movies(page7-1,limit)
         this.setState({page7:this.state.page7 - 1})
     }
+    handelNextPage9=e=>{
+        e.preventDefault()
+        const {page7,limit} = this.state
+        if(page7 === 1)this.setState({content7:""})
+        this.props.free_movies(page7+1,limit)
+        this.setState({page7:this.state.page7 + 1})
+    }
+    handelPrevPage9=e=>{
+        e.preventDefault()
+        const {page7,limit} = this.state
+        if(page7 ===2)this.setState({content7:"flex-end"})
+        this.props.free_movies(page7-1,limit)
+        this.setState({page7:this.state.page7 - 1})
+    }
     handelNewsPage=e=>{
         e.preventDefault()
         this.props.history.push("/topNews")
@@ -175,7 +193,7 @@ class HomePage extends Component {
         if(!this.props.user) return <Redirect to="/signIn" />
         console.log(this.props.user)
         return (
-            <>
+            <div>
             <Navbar/>
             <Search props={this.props}/>
               <>
@@ -189,9 +207,9 @@ class HomePage extends Component {
                { this.state.page1 >1 && <div> <button className="prev" onClick={this.handelPrevPage2}>prev page1</button> </div>}
                { this.props.moviePage?.length  > 6 && <div> <button className="next" onClick={this.handelNextPage2}>next page1</button> </div>}
                 </div>
+                </div>
 
 
-              </div>
               <div className="top_container">
                   <div className="movieHead">
                       <h1>All Marvel Movies</h1>
@@ -199,10 +217,23 @@ class HomePage extends Component {
               {this.props.marvelMovies ? <MovieList props={this.props} movies={this.props.marvelMovies}/> :<h1>Loading</h1>}
               <div style={{justifyContent:this.state.content}} className="homeBtns">
 
-               { this.state.page >1 && <div> <button className="prev" onClick={this.handelPrevPage}>prev page2</button> </div>}
-               { this.props.marvelMovies?.length  > 6 && <div> <button className="next" onClick={this.handelNextPage}>next page2</button></div>}
+               { this.state.page >1 && <div> <button className="prev" onClick={this.handelPrevPage}>prev page</button> </div>}
+               { this.props.marvelMovies?.length  > 6 && <div> <button className="next" onClick={this.handelNextPage}>next page</button></div>}
               </div>
               </div>
+
+
+              { this.props.userWatchlist?.length > 0 ?  <div className="top_container">
+                  <div className="movieHead">
+                      <h1>Movies Watchlist</h1>
+                  </div>
+              {this.props.userWatchlist ? <MovieList2 props={this.props} movies={this.props.userWatchlist}/> :<h1>Loading</h1>}
+              {/* <div style={{justifyContent:this.state.content7}} className="homeBtns"> */}
+{/* 
+               { this.state.page >1 && <div> <button className="prev" onClick={this.handelPrevPage9}>prev page</button> </div>}
+               { this.props.marvelMovies?.length  > 6 && <div> <button className="next" onClick={this.handelNextPage9}>next page</button></div>} */}
+              {/* </div> */}
+              </div> : null}
 
               <div className="top_container">
                   <div className="movieHead">
@@ -300,7 +331,7 @@ class HomePage extends Component {
               </>
               
                <Footer/>
-            </>
+            </div>
         )
     }
 }
@@ -317,8 +348,9 @@ const mapStateStore = stateStore =>{
        englishMovie:stateStore.movieState.englishMovie,
        dramaMovie:stateStore.movieState.dramaMovie,
        scienceMovie:stateStore.movieState.scienceMovie,
-       freeMovie:stateStore.movieState.freeMovie
+       freeMovie:stateStore.movieState.freeMovie,
+       userWatchlist:stateStore.watchListState.getWatchList
     }
 }
 
-export default connect(mapStateStore,{get_user2,marvel_movies,movies_by_page,searchNews,hindi_movies,english_movies,action_movies,science_movies,drama_movies,free_movies})(HomePage)
+export default connect(mapStateStore,{get_watchlist_user,get_user2,marvel_movies,movies_by_page,searchNews,hindi_movies,english_movies,action_movies,science_movies,drama_movies,free_movies})(HomePage)

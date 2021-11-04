@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom"
-import { BsFacebook } from "react-icons/bs";
-import { FaGoogle } from "react-icons/fa";
+// import { BsFacebook } from "react-icons/bs";
+// import { FaGoogle } from "react-icons/fa";
+import {GoogleLogin} from "react-google-login"
 import "../styles/login.css"
 import { google_login, log_in } from '../redux/action/userAction';
 import { connect } from 'react-redux';
 import {Redirect} from "react-router-dom"
-
+import {CLINT_ID} from "../config"
  class LogInPage extends Component {
      state={
          email:"",
@@ -21,9 +22,13 @@ import {Redirect} from "react-router-dom"
          const {email,password} = this.state
          this.props.log_in(email,password)
      }
-      googleLogin = () => {
-        window.open("https://o-auth-video-backend.herokuapp.com/auth/google", "_self");
-    }
+     responseGoogle = async res =>{
+        console.log(res)
+        if(res.error)return alert(res.error) 
+         if(this.responseGoogle.error){alert.error(res.error)};
+         const responce = await this.props.google_login(res)
+        //  console.log({...res.profileObj,...res.tokenObj})
+     }
 
     render() { if(this.props.user) return <Redirect to="/" />
         return (
@@ -44,8 +49,16 @@ import {Redirect} from "react-router-dom"
                         <Link to="/forgotPassword" >Need Help?</Link>
                     </div>
                     <div className="signUp"><p>New to Movie Time? <Link to="/signUp">Sign Up Now</Link></p>
-                    <button type="submit"><BsFacebook/> Login With Facebook  </button>
-                    <button type="submit" onClick={this.googleLogin}><FaGoogle/> Login With Google  </button>
+                    {/* <button type="submit"><BsFacebook/> Login With Facebook  </button> */}
+
+                    <GoogleLogin
+                     clientId={CLINT_ID}
+                     buttonText="Login"
+                     onSuccess={this.responseGoogle}
+                     onFailure={this.responseGoogle}
+                     scope="https://www.googleapis.com/auth/userinfo.email"
+                     cookiePolicy={'single_host_origin'}
+                    />
                     
                      </div>
                 </div>

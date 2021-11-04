@@ -10,6 +10,7 @@
 }
 .imageRegister img{
     width: 100vw;
+    height: 100vh;
     height: fit-content;
     overflow: hidden;
 }
@@ -20,7 +21,7 @@
     position:absolute;
     top: 114px;
     color: #737373;
-    right: 580px;
+    /* right: 580px; */
     flex-direction: column;
     justify-content: center;
     align-items: center;

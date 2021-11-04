@@ -3,11 +3,18 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link,Redirect } from 'react-router-dom'
 import Navbar from '../component/Navbar'
+import { get_user_subcription } from '../redux/action/subcriptionAction'
 import { email_verifaction, get_user2 } from '../redux/action/userAction'
 import "../styles/profile.css"
+
 class ProfilePage extends Component {
     state={
 
+    }
+    componentDidMount(){
+      if(this.props.user){
+        this.props.get_user_subcription()
+      }
     }
     handelClick=e=>{
         e.preventDefault()
@@ -62,12 +69,13 @@ class ProfilePage extends Component {
                 <h3>{this.props.user.user?.email} </h3>
                 {this.props.user && this.props.user.user?.isConfirmed === true && <h3>email verified</h3>}
                 {this.props.user && this.props.user.user?.isConfirmed === false && <h3>verify your email</h3>}
+                {this.props.user && this.props.user.user?.isSubscribe === true ? <h3>your {this.props.userSubcription?.subceibePlan} plan is active which will expire on {new Date(this.props.userSubcription?.planEnd).toDateString()} </h3> : <h3>Plese Subscribe To Watch Movies</h3>}
               </div>
-               <div className="profileBtn">
+               {  this.props.user?.user?.isThirdParty === false &&  <div className="profileBtn">
                {/* <Link style={{color:"black"}}   to="/editUser">Edit User</Link>  <br /> */}
                 <Link style={{color:"black"}} to="/changePassword">Change Password</Link>
                 {this.props.user?.user?.isConfirmed ? null :<button onClick={this.handelClick}> click hear to verify Email</button>}
-               </div>
+               </div>}
             </div>
             </>
         )
@@ -75,7 +83,8 @@ class ProfilePage extends Component {
 }
 const mapStateStore = stateStore =>{
     return{
-        user:stateStore.userState.user
+        user:stateStore.userState.user,
+        userSubcription:stateStore.subcriptionState.getUserSubcription
     }
 }
-export default connect(mapStateStore,{email_verifaction,get_user2})(ProfilePage)
+export default connect(mapStateStore,{email_verifaction,get_user2,get_user_subcription})(ProfilePage)

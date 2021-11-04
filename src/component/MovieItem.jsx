@@ -9,7 +9,10 @@ const MovieItem = ({movie,props, user}) => {
         if(user?.user?.isConfirmed === false){
             return alert("plese verify your email") & props.history.push(`/myProfile`)
         }else{
-            props.history.push(`/movieDetails/${movie._id}`)
+            if(movie._id){
+                props.history.push(`/movieDetails/${movie._id}`)
+            }else {props.history.push(`/movieDetails/${movie.movieid}`)}
+
         }
     }
     return (

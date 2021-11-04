@@ -1,5 +1,6 @@
 .imageBack img{
     width: 100vw;
+    height: 100vh;
 }
 .logIn_page{
     width: 100vw;
@@ -14,7 +15,7 @@
     position:absolute;
     top: 114px;
     color: #737373;
-    right: 580px;
+    /* right: 580px; */
     flex-direction: column;
     justify-content: center;
     align-items: center;

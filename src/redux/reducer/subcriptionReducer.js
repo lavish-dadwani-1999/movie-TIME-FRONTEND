@@ -1,8 +1,9 @@
-const {GET_SUBCRIPTION, SUBCRIPTION_SUCCESS, SUBCRIPTION_TOGGLE} = require("../actionTypes")
+const {GET_SUBCRIPTION, SUBCRIPTION_SUCCESS, SUBCRIPTION_TOGGLE, GET_USER_SUBCRIPTION} = require("../actionTypes")
 const initialState = {
     getSubcription:null,
     paymentSuccess:null,
-    toggleSubcription:false
+    toggleSubcription:false,
+    getUserSubcription:null
 }
 
 
@@ -15,6 +16,8 @@ const subcriptionReducer = (state = initialState,action)=>{
                 return {...state,paymentSuccess:payload}
                 case SUBCRIPTION_TOGGLE:
                     return {...state,toggleSubcription:!state.toggleSubcription}
+                    case GET_USER_SUBCRIPTION:
+                        return {...state,getUserSubcription:payload}
         default:
             return {...state}
     }

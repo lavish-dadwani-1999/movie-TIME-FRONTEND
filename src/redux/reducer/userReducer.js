@@ -24,6 +24,7 @@ const userReducer = (state = initialState, action )=>{
                 return {...state,user:payload}
                 case LOGOUT_USER:
                     localStorage.removeItem("user")
+                    localStorage.removeItem("watchList")
                     return {...state,user:payload}
                     case UPDATE_USER:
                         return {...state,updateUser:payload}
@@ -32,6 +33,8 @@ const userReducer = (state = initialState, action )=>{
                         case CHANGE_USER_PASSWORD:
                             return {...state,changePassword:payload}
                             case GOOGLE_LOGIN:
+                                const user3 = JSON.stringify(payload)
+                                localStorage.setItem("user",user3)
                                 return {...state,user:payload}
                                 case FIND_EMAIL:
                                     return {...state,findEmail:payload}
