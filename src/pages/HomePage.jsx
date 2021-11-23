@@ -12,10 +12,11 @@ import { searchNews } from '../redux/action/newsAction'
 import { get_user2 } from '../redux/action/userAction'
 import { get_watchlist_user } from '../redux/action/watchlistAction'
 import "../styles/home.css"
+import styled from 'styled-components';
 class HomePage extends Component {
 
     state={
-        limit:7,
+        limit:6,
         page:1,
         page1:1,
         page2:1,
@@ -193,57 +194,57 @@ class HomePage extends Component {
         if(!this.props.user) return <Redirect to="/signIn" />
         console.log(this.props.user)
         return (
-            <div>
+            <div style={{width:"100vw"}}>
             <Navbar/>
-            <Search props={this.props}/>
               <>
-              <div className="top_container">
-              <div className="movieHead">
+              <Container1>
+            <Search props={this.props}/>
+              <Container>
+              
                       <h1>All  Movies</h1>
-                  </div>
+                
                 {this.props.moviePage ? <MovieList props={this.props} movies={this.props.moviePage}/> :<h1>Loading</h1>}
+
                 <div style={{justifyContent:this.state.content1}} className="homeBtns">
 
-               { this.state.page1 >1 && <div> <button className="prev" onClick={this.handelPrevPage2}>prev page1</button> </div>}
-               { this.props.moviePage?.length  > 6 && <div> <button className="next" onClick={this.handelNextPage2}>next page1</button> </div>}
+               { this.state.page1 > 1 && <div> <button  className="prev" onClick={this.handelPrevPage2}>prev page</button> </div>}
+               { this.props.moviePage?.length  > 5 && <div> <button className="next" onClick={this.handelNextPage2}>next page</button> </div>}
                 </div>
-                </div>
+                </Container>
 
 
-              <div className="top_container">
-                  <div className="movieHead">
+              <Container>
+                
                       <h1>All Marvel Movies</h1>
-                  </div>
+                  
               {this.props.marvelMovies ? <MovieList props={this.props} movies={this.props.marvelMovies}/> :<h1>Loading</h1>}
               <div style={{justifyContent:this.state.content}} className="homeBtns">
 
-               { this.state.page >1 && <div> <button className="prev" onClick={this.handelPrevPage}>prev page</button> </div>}
-               { this.props.marvelMovies?.length  > 6 && <div> <button className="next" onClick={this.handelNextPage}>next page</button></div>}
+               { this.state.page >1 ? <div> <button className="prev" onClick={this.handelPrevPage}>prev page</button> </div> : null}
+               { this.props.marvelMovies?.length  > 5 ? <div> <button className="next" onClick={this.handelNextPage}>next page</button></div> : null}
               </div>
-              </div>
+              </Container>
 
 
               { this.props.userWatchlist?.length > 0 ?  <div className="top_container">
-                  <div className="movieHead">
+                
                       <h1>Movies Watchlist</h1>
-                  </div>
               {this.props.userWatchlist ? <MovieList2 props={this.props} movies={this.props.userWatchlist}/> :<h1>Loading</h1>}
               {/* <div style={{justifyContent:this.state.content7}} className="homeBtns"> */}
 {/* 
                { this.state.page >1 && <div> <button className="prev" onClick={this.handelPrevPage9}>prev page</button> </div>}
-               { this.props.marvelMovies?.length  > 6 && <div> <button className="next" onClick={this.handelNextPage9}>next page</button></div>} */}
+               { this.props.marvelMovies?.length  > 5 && <div> <button className="next" onClick={this.handelNextPage9}>next page</button></div>} */}
               {/* </div> */}
               </div> : null}
 
               <div className="top_container">
-                  <div className="movieHead">
+               
                       <h1>Hindi Movies</h1>
-                  </div>
               {this.props.hindiMovie ? <MovieList props={this.props} movies={this.props.hindiMovie}/> :<h1>Loading</h1>}
               <div style={{justifyContent:this.state.content2}} className="homeBtns">
 
                { this.state.page2 >1 && <div> <button className="prev" onClick={this.handelPrevPage3}>prev page</button> </div>}
-               { this.props.hindiMovie?.length  > 6 && <div> <button className="next" onClick={this.handelNextPage3}>next page</button></div>}
+               { this.props.hindiMovie?.length  > 5 && <div> <button className="next" onClick={this.handelNextPage3}>next page</button></div>}
               </div>
               </div>
 
@@ -256,7 +257,7 @@ class HomePage extends Component {
               <div style={{justifyContent:this.state.content3}} className="homeBtns">
 
                { this.state.page3 >1 && <div> <button className="prev" onClick={this.handelPrevPage4}>prev page</button> </div>}
-               { this.props.englishMovie?.length  > 6 && <div> <button className="next" onClick={this.handelNextPage4}>next page</button></div>}
+               { this.props.englishMovie?.length  > 5 && <div> <button className="next" onClick={this.handelNextPage5}>next page</button></div>}
               </div>
               </div>
 
@@ -268,8 +269,8 @@ class HomePage extends Component {
               {this.props.actionMovie ? <MovieList props={this.props} movies={this.props.actionMovie}/> :<h1>Loading</h1>}
               <div style={{justifyContent:this.state.content4}} className="homeBtns">
 
-               { this.state.page4 >1 && <div> <button className="prev" onClick={this.handelPrevPage5}>prev page</button> </div>}
-               { this.props.actionMovie?.length  > 6 && <div> <button className="next" onClick={this.handelNextPage5}>next page</button></div>}
+               { this.state.page4 >1 && <div> <button  className="prev" onClick={this.handelPrevPage5}>prev page</button> </div>}
+               { this.props.actionMovie?.length  > 5 && <div> <button className="next" onClick={this.handelNextPage5}>next page</button></div>}
               </div>
               </div>
 
@@ -282,7 +283,7 @@ class HomePage extends Component {
               <div style={{justifyContent:this.state.content5}} className="homeBtns">
 
                { this.state.page5 >1 && <div> <button className="prev" onClick={this.handelPrevPage6}>prev page</button> </div>}
-               { this.props.scienceMovie?.length  > 6 && <div> <button className="next" onClick={this.handelNextPage6}>next page</button></div>}
+               { this.props.scienceMovie?.length  > 5 && <div> <button className="next" onClick={this.handelNextPage6}>next page</button></div>}
               </div>
               </div>
 
@@ -295,7 +296,7 @@ class HomePage extends Component {
               <div style={{justifyContent:this.state.content6}} className="homeBtns">
 
                { this.state.page6 >1 && <div> <button className="prev" onClick={this.handelPrevPage7}>prev page</button> </div>}
-               { this.props.dramaMovie?.length  > 6 && <div> <button className="next" onClick={this.handelNextPage7}>next page</button></div>}
+               { this.props.dramaMovie?.length  > 5 && <div> <button className="next" onClick={this.handelNextPage7}>next page</button></div>}
               </div>
               </div>
 
@@ -307,7 +308,7 @@ class HomePage extends Component {
               <div style={{justifyContent:this.state.content7}} className="homeBtns">
 
                { this.state.page7 >1 && <div> <button className="prev" onClick={this.handelPrevPage8}>prev page</button> </div>}
-               { this.props.freeMovie?.length  > 6 && <div> <button className="next" onClick={this.handelNextPage8}>next page</button></div>}
+               { this.props.freeMovie?.length  > 5 && <div> <button className="next" onClick={this.handelNextPage8}>next page</button></div>}
               </div>
               </div>
 
@@ -328,6 +329,7 @@ class HomePage extends Component {
                     <button  className="next"  onClick={this.handelNewsPage}>Show All News</button>
               </div>
               </div>
+              </Container1>
               </>
               
                <Footer/>
@@ -352,5 +354,26 @@ const mapStateStore = stateStore =>{
        userWatchlist:stateStore.watchListState.getWatchList
     }
 }
+const Container = styled.div`
+  
+`;
+
+const Container1 = styled.main`
+position:relative;
+min-height: calc(100vh - 250px);
+overflow-x:hidden;
+display:block;
+padding: 0 calc(3.5vw + 5px);
+
+ &:after{
+    background: url("/images/home-background.png") center center / cover
+    no-repeat fixed;
+    content:"";
+    position: absolute;
+    inset: 0px;
+    opacity: 1;
+    z-index:  -1;
+ }
+`
 
 export default connect(mapStateStore,{get_watchlist_user,get_user2,marvel_movies,movies_by_page,searchNews,hindi_movies,english_movies,action_movies,science_movies,drama_movies,free_movies})(HomePage)

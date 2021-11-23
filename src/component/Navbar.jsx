@@ -21,12 +21,12 @@ import "../styles/navbar.css"
             <div className="navbar">
         {this.props.user ? <>
           <div className="subNav">
-               <Link className="btnNav" to="/">Home</Link>
-          <Link  className="btnNav" to="/myProfile">My Profile</Link>
+               <Link className="btnNav2" to="/">Home</Link>
+          <Link  className="btnNav2" to="/myProfile">My Profile</Link>
           </div>
           <div className="subNav">
          { this.props.user?.user?.isSubscribe === false &&  <Link  className="btnNav" to="/subcription">Subcribe </Link> }
-         <button className="btn nabBtn" onClick={this.handelLOGOUT}>Log Out</button>
+         <button className="btn nabBtn" style={{marginRight:'10px'}} onClick={this.handelLOGOUT}>Log Out</button>
           </div>
            </> 
           : <div className="subNav2"> <Link className="btnsignIn" to="/signIn">Sign In</Link>

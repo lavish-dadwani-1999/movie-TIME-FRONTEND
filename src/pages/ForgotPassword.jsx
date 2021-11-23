@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { find_email } from '../redux/action/userAction'
 import validator from "validator"
 import "../styles/forgotPassword.css"
+import Navbar from '../component/Navbar'
 const ForgotPassword = ({find_email,history,token}) => {
 const [email, setemail] = useState(" ")
 console.log(history)
@@ -15,6 +16,7 @@ const handelSubmit = e=>{
 
     return (
         <>
+        <Navbar />
         {/* {token && <Redirect to="/forgotpassword2" />} */}
         <div className="forgotPasswordPage">
             <form className="forgotPassword" onSubmit={handelSubmit} >

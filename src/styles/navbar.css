@@ -5,7 +5,7 @@
     align-items: unset;
     color: #000;
     width: 100vw;
-    background-color: #02042B;
+    background-color: #13121C;
     font-family: monospace;
     font-size: 20px;
 }
@@ -13,7 +13,14 @@
 
 .btnNav{
     padding: 10px;
-    margin: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+
+}
+
+.btnNav2{
+    padding: 10px;
+    margin-left: 10px;
     cursor: pointer;
 
 }

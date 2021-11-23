@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { BsFacebook } from "react-icons/bs";
-import { FaGoogle } from "react-icons/fa";
+
 import "../styles/register.css"
 import { connect } from 'react-redux';
 import { google_login, register } from '../redux/action/userAction';
 import {Redirect} from "react-router-dom"
 import {GoogleLogin } from 'react-google-login';
 import { CLINT_ID } from '../config';
-
+import Navber from "../component/Navbar"
  class RegisterPage extends Component {
      state={
          name:"",
@@ -35,6 +34,8 @@ import { CLINT_ID } from '../config';
      }
     render() { if(this.props.user ) return <Redirect to="/" />
         return (
+            <>
+            <Navber />
             <div className="registerPage">
                 <div className="imageRegister">
                 <img style={{height:"100vh"}} src="https://assets.nflxext.com/ffe/siteui/vlv3/9b3267c9-5086-4550-92f1-eddc22a1f78e/8b897a27-47f0-42d0-bb50-10fdb72d34a2/IN-en-20211004-popsignuptwoweeks-perspective_alpha_website_medium.jpg" alt="backImage" />
@@ -62,6 +63,7 @@ import { CLINT_ID } from '../config';
                      </div>
                 </div>
             </div>
+            </>
         )
     }
 }

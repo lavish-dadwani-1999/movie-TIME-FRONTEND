@@ -8,6 +8,7 @@ import { google_login, log_in } from '../redux/action/userAction';
 import { connect } from 'react-redux';
 import {Redirect} from "react-router-dom"
 import {CLINT_ID} from "../config"
+import Navbar from '../component/Navbar';
  class LogInPage extends Component {
      state={
          email:"",
@@ -28,10 +29,12 @@ import {CLINT_ID} from "../config"
          if(this.responseGoogle.error){alert.error(res.error)};
          const responce = await this.props.google_login(res)
         //  console.log({...res.profileObj,...res.tokenObj})
-     }
+     } 
 
     render() { if(this.props.user) return <Redirect to="/" />
         return (
+            <>
+            <Navbar/>
             <div className="logIn_page">
                 <div className="imageBack">
                <img src="https://assets.nflxext.com/ffe/siteui/vlv3/9b3267c9-5086-4550-92f1-eddc22a1f78e/8b897a27-47f0-42d0-bb50-10fdb72d34a2/IN-en-20211004-popsignuptwoweeks-perspective_alpha_website_medium.jpg" alt="" />
@@ -83,6 +86,7 @@ import {CLINT_ID} from "../config"
                     </div>
                 </div> */}
             </div>
+            </>
         )
     }
 }

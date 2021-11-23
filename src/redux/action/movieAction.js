@@ -11,6 +11,7 @@ export const movies_by_page =(page,limit) => async Dispatch =>{
         Dispatch({type:MOVIE_TOGGLE})
         const movies = await axios(BASE_ROUTE+`/moviesByPage?page=${page}&limit=${limit}`,{headers: {"Authorization": user.user.token}})
         console.log(movies.data)
+        Dispatch({type:MOVIE_DETAILS,payload:null})
         Dispatch({type:MOVIES_BY_PAGE,payload:movies.data})
     }catch(err){
         if (err.response && err.response.data) {
