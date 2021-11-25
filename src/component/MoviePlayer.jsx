@@ -17,15 +17,15 @@ console.log(movieId)
 const result = watchList.filter((id)=> id.movieId === movie._id)
 
 console.log(result)
-useEffect(() => {
-    if(result.length > 0 ){
-        setmovieId(movie._id)
-        setremoveWatchListtoggle(true)
-    }else{
-        setaddWatchListtoggle(true)
-    }
+// useEffect(() => {
+//     if(result.length > 0 ){
+//         setmovieId(movie._id)
+//         setremoveWatchListtoggle(true)
+//     }else{
+//         setaddWatchListtoggle(true)
+//     }
    
-}, [userWatchlist])
+// }, [userWatchlist])
 
 useEffect(() => {
    setmovieId(movie._id)
