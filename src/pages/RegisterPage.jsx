@@ -18,10 +18,10 @@ import Navber from "../component/Navbar"
          
   responseGoogle = async res =>{
     console.log(res)
-    if(res.error)return alert(res.error) 
+    if(res.error)return console.log(res.error) 
      if(this.responseGoogle.error){alert.error(res.error)};
-     const responce = await this.props.google_login(res)
-    //  console.log({...res.profileObj,...res.tokenObj})
+     await this.props.google_login(res)
+    //  console.log({...res.profileObj,...res.tokenObj})alert
  }
   onChange =(e)=>{
       this.setState({[e.target.name]:e.target.value})

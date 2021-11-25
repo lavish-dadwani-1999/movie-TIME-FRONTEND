@@ -19,7 +19,7 @@ const MovieItem = ({movie,props, user}) => {
     // }
     return (
         <Wrap>
-            <Link to={`/movieDetails/${movie._id}`} >
+            <Link to={`/movieDetails/${movie._id ? movie._id : movie.movieid}`} >
             <img src={movie.posterImage}  alt="poster" />
             </Link>
         </Wrap>

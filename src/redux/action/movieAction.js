@@ -15,7 +15,7 @@ export const movies_by_page =(page,limit) => async Dispatch =>{
         Dispatch({type:MOVIES_BY_PAGE,payload:movies.data})
     }catch(err){
         if (err.response && err.response.data) {
-            alert(`${err.response.data.message}`) // some reason error message
+            console.log(`${err.response.data.message}`) // some reason error message
             console.log(err)
           }
     }finally{
@@ -32,7 +32,7 @@ export const hindi_movies =(page,limit) => async Dispatch =>{
         Dispatch({type:HINDI_MOVIE,payload:movies.data})
     }catch(err){
         if (err.response && err.response.data) {
-            alert(`${err.response.data.message}`) // some reason error message
+            console.log(`${err.response.data.message}`) // some reason error message
             console.log(err)
           }
     }finally{
@@ -49,7 +49,7 @@ export const english_movies =(page,limit) => async Dispatch =>{
         Dispatch({type:ENGLISH_MOVIE,payload:movies.data})
     }catch(err){
         if (err.response && err.response.data) {
-            alert(`${err.response.data.message}`) // some reason error message
+            console.log(`${err.response.data.message}`) // some reason error message
             console.log(err)
           }
     }finally{
@@ -67,7 +67,7 @@ export const action_movies =(page,limit) => async Dispatch =>{
         Dispatch({type:ACTION_MOVIE,payload:movies.data})
     }catch(err){
         if (err.response && err.response.data) {
-            alert(`${err.response.data.message}`) // some reason error message
+            console.log(`${err.response.data.message}`) // some reason error message
             console.log(err)
           }
     }finally{
@@ -84,7 +84,7 @@ export const drama_movies =(page,limit) => async Dispatch =>{
         Dispatch({type:DRAMA_MOVIE,payload:movies.data})
     }catch(err){
         if (err.response && err.response.data) {
-            alert(`${err.response.data.message}`) // some reason error message
+            console.log(`${err.response.data.message}`) // some reason error message
             console.log(err)
         }
     }finally{
@@ -101,7 +101,7 @@ export const free_movies =(page,limit) => async Dispatch =>{
         Dispatch({type:FREE_MOVIE,payload:movies.data})
     }catch(err){
         if (err.response && err.response.data) {
-            alert(`${err.response.data.message}`) // some reason error message
+            console.log(`${err.response.data.message}`) // some reason error message
             console.log(err)
         }
     }finally{
@@ -119,7 +119,7 @@ export const science_movies =(page,limit) => async Dispatch =>{
         Dispatch({type:SCIENCE_FICTION_MOVIE,payload:movies.data})
     }catch(err){
         if (err.response && err.response.data) {
-            alert(`${err.response.data.message}`) // some reason error message
+            console.log(`${err.response.data.message}`) // some reason error message
             console.log(err)
           }
     }finally{
@@ -136,7 +136,7 @@ export const marvel_movies =(page,limit) => async Dispatch =>{
         Dispatch({type:MARVEL_MOVIES,payload:movies.data})
     }catch(err){
         if (err.response && err.response.data) {
-            alert(`${err.response.data.message}`) // some reason error message
+            console.log(`${err.response.data.message}`) // some reason error message
             console.log(err)
           }
     }finally{
@@ -155,7 +155,7 @@ export const search_movies =(query) => async Dispatch =>{
         Dispatch({type:MOVIES_SEARCH,payload:movies.data})
     }catch(err){
         if (err.response && err.response.data) {
-            alert(`${err.response.data.message}`) // some reason error message
+            console.log(`${err.response.data.message}`) // some reason error message
             console.log(err)
           }
     }finally{
@@ -173,7 +173,7 @@ export const movie_details =(id) => async Dispatch =>{
         Dispatch({type:MOVIE_DETAILS,payload:movies.data})
     }catch(err){
         if (err.response && err.response.data) {
-            alert(`${err.response.data.message}`) // some reason error message
+            console.log(`${err.response.data.message}`) // some reason error message
             console.log(err)
           }
     }finally{

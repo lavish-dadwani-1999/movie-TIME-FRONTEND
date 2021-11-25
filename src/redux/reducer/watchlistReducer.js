@@ -1,7 +1,7 @@
 import { ADD_TO_WATCHLIST, GET_USER_WATCHLIST, REMOVE_FROM_WATCHLIST, WATCHLIST_TOGGLE } from "../actionTypes"
 
 const initialState = {
-    getWatchList: JSON.parse(localStorage.getItem("watchList") ) || null,
+    getWatchList: null ,
     addWatchList:null,
     removeWatchList:null,
     watchlistToggle:false

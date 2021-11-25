@@ -48,8 +48,7 @@ export const log_out =(token) => async Dispatch =>{
         Dispatch({type:LOGOUT_USER,payload:null})
     }catch(err){
         if (err.response && err.response.data) {
-            Dispatch({type:LOGOUT_USER,payload:null})
-            alert(`${err.response.data.message}`) // some reason error message
+            Dispatch({type:LOGOUT_USER,payload:null}) // some reason error message
             console.log(err)
           }
     }finally{
@@ -173,8 +172,11 @@ export const get_user2 =(token) => async Dispatch =>{
         Dispatch({type:GET_USER2,payload:user.data})
     }catch(err){
         if (err.response && err.response.data) {
+            if(err.response.data.message === "cannot get user" ){
+                Dispatch({type:LOGOUT_USER,payload:null})
+            }
             // alert(`${err.response.data.message}`) // some reason error message
-            console.log(err)
+            console.log(err.response)
           }
     }finally{
         Dispatch({type:TOGGLE_AUTH_USER})
@@ -191,7 +193,7 @@ export const email_verifaction =(email,token) => async Dispatch =>{
         if(user.data.message)alert(user.data.message)
     }catch(err){
         if (err.response && err.response.data) {
-            alert(`${err.response.data.message}`) // some reason error message
+            // alert(`${err.response.data.message}`) // some reason error message
             console.log(err)
           }
     }finally{

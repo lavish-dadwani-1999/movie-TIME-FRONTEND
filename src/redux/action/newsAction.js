@@ -19,7 +19,7 @@ export const searchNews = ()=> async dispatch=>{
         console.log(news2,news)
     }catch(err){
         if (err.response && err.response.data) {
-            alert(`${err.response.data.message}`) // some reason error message
+            console.log(`${err.response.data.message}`) // some reason error message
             console.log(err)
           }
     }finally{
